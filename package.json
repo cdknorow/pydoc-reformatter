@@ -1,0 +1,97 @@
+{
+  "name": "pydoc-reformat",
+  "displayName": "pydoc-reformat",
+  "description": "Provides and easy way to send python docstrings to chatGPT for reformating",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:left-panel-webview",
+    "onCommand:pydoc-reformat.printString"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pydoc-reformat.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "pydoc-reformat.printString",
+        "title": "Print String"
+      }
+    ],
+    "configuration": {
+      "title": "pydocReformat",
+      "properties": {
+        "pydocReformat.chatGPTAPIKey": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null,
+          "description": "API Key for your chatGPT account"
+        }
+      }
+    }
+  },
+  "viewsContainers": {
+    "activitybar": [
+      {
+        "id": "webview",
+        "title": "Example for webview"
+      }
+    ]
+  },
+  "views": {
+    "webview": [
+      {
+        "type": "webview",
+        "id": "left-panel-webview",
+        "name": "Webview"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.77.0",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "@vscode/test-electron": "^2.3.0",
+    "axios": "^1.3.5",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@types/react-dom": "^17.0.11",
+    "axios": "^1.3.5",
+    "dotenv-webpack": "^8.0.1",
+    "module-alias": "^2.2.2",
+    "path": "^0.12.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.80.0"
+  },
+  "_moduleAliases": {
+    "utils": "out/utils",
+    "providers": "out/providers",
+    "components": "out/components",
+    "constant": "out/constant.js"
+  }
+}
